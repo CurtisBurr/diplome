@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>
+        Linked List Visualization
+    </title>
+    <link rel="stylesheet" href="styles/index.css">
+
+    <!-- jqueury stuff.  Only used for the animation speed slider. -->
+    <link rel="stylesheet" href="styles/algo.css">
+    <script src="scripts/jquery-1.5.2.min.js"></script>
+    <script src="scripts/jquery-ui-1.8.11.custom.min.js"></script>
+
+    <!-- Javascript for the actual visualization code -->
+    <script type="text/javascript" src="scripts/CustomEvents.js"></script>
+    <script type="text/javascript" src="scripts/UndoFunctions.js"></script>
+    <script type="text/javascript" src="scripts/AnimatedObject.js"></script>
+    <script type="text/javascript" src="scripts/AnimatedLabel.js"></script>
+    <script type="text/javascript" src="scripts/AnimatedCircle.js"></script>
+    <script type="text/javascript" src="scripts/AnimatedRectangle.js"></script>
+    <script type="text/javascript" src="scripts/AnimatedLinkedList.js"></script>
+    <script type="text/javascript" src="scripts/HighlightCircle.js"></script>
+    <script type="text/javascript" src="scripts/Line.js"></script>
+    <script type="text/javascript" src="scripts/ObjectManager.js"></script>
+    <script type="text/javascript" src="scripts/AnimationMain.js"></script>
+
+    <script type="text/javascript" src="scripts/Algorithm.js"></script>
+    <script type="text/javascript" src="scripts/StackLL.js"></script>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+            crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
+            integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p"
+            crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
+            integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
+            crossorigin="anonymous"></script>
+</head>
+<body onload="init();" class="VisualizationMainPage">
+<div id="container">
+    <a href="index.html" class="go-back-btn" style="position: absolute; left: 24px; top: 24px">
+        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-arrow-left"
+             viewBox="0 0 16 16">
+            <path fill-rule="evenodd"
+                  d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z"/>
+        </svg>
+    </a>
+    <div class="header">
+        <h1>
+            Linked list |
+            <button type="button" class="btn btn-outline-light" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                Read info
+            </button>
+        </h1>
+    </div>
+    <!-- Start Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Linked list</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    In computer science, a linked list is a linear collection of data elements whose order is not given
+                    by their physical placement in memory. Instead, each element points to the next. It is a data
+                    structure consisting of a collection of nodes which together represent a sequence. In its most basic
+                    form, each node contains: data, and a reference (in other words, a link) to the next node in the
+                    sequence. This structure allows for efficient insertion or removal of elements from any position in
+                    the sequence during iteration. More complex variants add additional links, allowing more efficient
+                    insertion or removal of nodes at arbitrary positions. A drawback of linked lists is that access time
+                    is linear (and difficult to pipeline). Faster access, such as random access, is not feasible. Arrays
+                    have better cache locality compared to linked lists.
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="mainContent">
+        <div id="algoControlSection">
+            <!-- Table for buttons to control specific animation (insert/find/etc) -->
+            <!-- (filled in by javascript code specific to the animtion) -->
+            <table id="AlgorithmSpecificControls"></table>
+        </div>
+
+        <!-- Drawing canvas where all animation is done.  Note:  can be resized in code -->
+
+        <canvas id="canvas" width="500" height="500"
+                style="width: 80%; height: 60%; margin-left: 10%; margin-right: 10%;"></canvas>
+
+        <div id="generalAnimationControlSection">
+            <!-- Table for buttons to control general animation (play/pause/undo/etc) -->
+            <!-- (filled in by javascript code, specifically AnimationMain.js)  -->
+
+            <table id="GeneralAnimationControls"></table>
+        </div>
+    </div> <!-- mainContent -->
+</div><!-- container -->
+</body>
+</html>
+
